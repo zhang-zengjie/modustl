@@ -38,6 +38,8 @@ p3, = plt.plot(x_stage_3[0], x_stage_3[1], marker='o', color=STATE_3_COLOR, line
 pe, = plt.plot(x_stage_3[0][-1], x_stage_3[1][-1], marker='o', color=STATE_3_COLOR, linewidth=2, markersize=8)
 plt.xlim([0, SAFETY[1]])
 plt.ylim([0, SAFETY[3]])
+plt.xlabel('x')
+plt.ylabel('y')
 plt.legend([ps, p1, p2, p3, pe],
            ['Initial position', 'Trajectory stage 1', 'Trajectory stage 2', 'Trajectory stage 3', 'Ending position'],
            loc='lower left')
@@ -70,5 +72,9 @@ axs[0].set_xlim([0, kappa[3]])
 axs[0].set_ylim([SAFETY[2], SAFETY[3]-1])
 axs[1].set_xlim([0, kappa[3]])
 axs[1].set_ylim([SAFETY[2], SAFETY[3]-1])
+
+axs[0].set_ylabel('$x$ position')
+axs[1].set_ylabel('$y$ position')
+axs[1].set_xlabel('time step ($k$)')
 
 plt.show()

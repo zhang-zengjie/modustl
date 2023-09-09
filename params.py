@@ -12,10 +12,10 @@ sys = LinearSystem(A, B, C, D)
 L = 15
 tau = 3
 
-SAFETY = (0, 10, 0, 8)
-TARGET = (3, 5, 5, 7)
-HOME = (7, 9, 5, 7)
-CHARGER = (7, 9, 2, 4)
+SAFETY = (0, 8, 0, 7)
+TARGET = (1, 3, 4, 6)
+HOME = (5, 7, 4, 6)
+CHARGER = (5, 7, 1, 3)
 
 kappa = [0, L, 2*L, 3*L]
 

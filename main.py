@@ -4,7 +4,7 @@ from params import sys, n, kappa, bar_phi, bar_phi_t
 
 
 u_limits = 1
-x0 = np.array([2, 6])
+x0 = np.array([0, 5])
 u_min = np.array([-u_limits, -u_limits])
 u_max = np.array([u_limits, u_limits])
 Q = np.zeros([n, n])

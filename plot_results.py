@@ -4,10 +4,6 @@ import matplotlib.pyplot as plt
 from params import kappa, gamma_c, gamma_t, gamma_h, SAFETY, TARGET, HOME, CHARGER
 
 
-matplotlib.rcParams['pdf.fonttype'] = 42
-matplotlib.rcParams['ps.fonttype'] = 42
-
-
 def get_coordinates(bounds):
     x_coordinates = [bounds[0], bounds[1], bounds[1], bounds[0]]
     y_coordinates = [bounds[2], bounds[2], bounds[3], bounds[3]]
@@ -51,6 +47,8 @@ plt.legend([ps, p1, p2, p3, pe],
            ['Initial position', 'Trajectory stage 1', 'Trajectory stage 2', 'Trajectory stage 3', 'Ending position'],
            loc='lower left')
 
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
 
 fig, axs = plt.subplots(2)
 
@@ -81,8 +79,8 @@ axs[0].set_ylim([SAFETY[2], SAFETY[3]-1])
 axs[1].set_xlim([0, kappa[3]])
 axs[1].set_ylim([SAFETY[2], SAFETY[3]-1])
 
-axs[0].set_ylabel('$x$ position')
-axs[1].set_ylabel('$y$ position')
-axs[1].set_xlabel('time step ($k$)')
+axs[0].set_ylabel(r'$x$')
+axs[1].set_ylabel(r'$y$')
+axs[1].set_xlabel(r'$k$')
 
 plt.show()

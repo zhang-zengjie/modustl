@@ -1,6 +1,11 @@
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 from params import kappa, gamma_c, gamma_t, gamma_h, SAFETY, TARGET, HOME, CHARGER
+
+
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 
 
 def get_coordinates(bounds):
@@ -30,6 +35,8 @@ plt.fill(*get_coordinates(CHARGER), color=CHARGER_COLOR)
 plt.text((TARGET[0]+TARGET[1])/2, (TARGET[2]+TARGET[3])/2+0.2, 'TARGET', fontsize=12, horizontalalignment='center')
 plt.text((HOME[0]+HOME[1])/2, (HOME[2]+HOME[3])/2+0.2, 'HOME', fontsize=12, horizontalalignment='center')
 plt.text((CHARGER[0]+CHARGER[1])/2, (CHARGER[2]+CHARGER[3])/2+0.2, 'CHARGER', fontsize=12, horizontalalignment='center')
+plt.text(SAFETY[0]+0.1, SAFETY[3]-0.1, 'SAFETY', fontsize=12, horizontalalignment='left', verticalalignment='top')
+
 
 ps, = plt.plot(x_stage_1[0][0], x_stage_1[1][0], marker='o', color=STATE_1_COLOR, linewidth=2, markersize=8)
 p1, = plt.plot(x_stage_1[0], x_stage_1[1], marker='o', color=STATE_1_COLOR, linewidth=2, markersize=5)
@@ -43,6 +50,7 @@ plt.ylabel('y')
 plt.legend([ps, p1, p2, p3, pe],
            ['Initial position', 'Trajectory stage 1', 'Trajectory stage 2', 'Trajectory stage 3', 'Ending position'],
            loc='lower left')
+
 
 fig, axs = plt.subplots(2)
 

@@ -13,7 +13,7 @@ conda install -c conda-forge matplotlib
 conda install -c anaconda scipy
 ```
 
-## Toolbox stilpy
+## Toolbox stlpy
 
 This benchmark is based on the `stlpy` toolbox (https://github.com/vincekurtz/stlpy/blob/main/README.md). Please cite the source when you develop your own benchmark.
 
@@ -21,3 +21,7 @@ This benchmark is based on the `stlpy` toolbox (https://github.com/vincekurtz/st
 
 - Run `main.py` to generate system trajectories;
 - Run `plot_results.py` to plot the results.
+
+## License
+
+For the license of the `stlpy` toolbox, refer to `stlpy/LICENSE`.

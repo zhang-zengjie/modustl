@@ -1,15 +1,24 @@
 import numpy as np
 from stlpy.solvers import GurobiMICPSolver as MICPSolver
-from params import sys, n, kappa, bar_phi, bar_phi_t
+from config import get_sys, get_specs, draw
 
 
-u_limits = 1
-x0 = np.array([0, 5])
+n = 2                           # The dimension of the robot
+L = 15                          # The length of each split time interval
+kappa = [0, L, 2*L, 3*L]        # The split timing points
+sys = get_sys(n)                # The robot dynamic model
+
+# Generate predicates and split local specifications
+gamma, bar_phi, bar_phi_t = get_specs(n, kappa)
+
+u_limits = 1                                    # Control limits
+x0 = np.array([0, 5])                           # Initial position
 u_min = np.array([-u_limits, -u_limits])
 u_max = np.array([u_limits, u_limits])
-Q = np.zeros([n, n])
-R = np.eye(n)
+Q = np.zeros([n, n])                            # State cost
+R = np.eye(n)                                   # Control cost
 
+xx = []
 for s in range(len(kappa)-1):
 
     if s < 2:
@@ -19,6 +28,8 @@ for s in range(len(kappa)-1):
     solver.AddControlBounds(u_min, u_max)
     solver.AddQuadraticCost(Q, R)
     x, u, _, _ = solver.Solve()
-    np.save('x' + str(s + 1) + '.npy', x)
+    xx += [x]
     x0 = x.T[-1]
 
+# Draw the results
+draw(xx, kappa, gamma) 
